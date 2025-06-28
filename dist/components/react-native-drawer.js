@@ -3,7 +3,7 @@ import Animated, { useSharedValue, withTiming, useAnimatedStyle, } from 'react-n
 import { View, Text, TouchableOpacity, Dimensions, StyleSheet, FlatList, } from 'react-native';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
-const DrawerNavigation = ({ navigationOptions, Page, flatListStyle, animatedViewStyle, itemContainerStyle, itemTextStyle, direction = 'right' }) => {
+const DrawerNavigation = ({ navigationOptions, Page, flatListStyle, animatedViewStyle, itemContainerStyle, itemTextStyle, direction = 'left' }) => {
     const animatedHeight = useSharedValue(HEIGHT);
     const animatedWidth = useSharedValue(WIDTH);
     const animatedRadius = useSharedValue(100);
