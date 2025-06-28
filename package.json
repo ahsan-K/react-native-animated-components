@@ -1,6 +1,6 @@
 {
     "name": "@ahsankk/react-native-animated-components",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "A set of reusable animated components for React Native using Reanimated",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
