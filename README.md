@@ -25,24 +25,40 @@ Here’s a quick preview of the drawer navigation in action:
 ## 🧠 Usage
 
 ```tsx
-import DrawerNavigation from './DrawerNavigation';
-import HomePage from './HomePage';
+import { DrawerNavigation } from '@ahsankk/react-native-animated-components';
 import { Image, Text } from 'react-native';
+
 
 const options = [
   {
     title: "Home",
-    onPress: () => {},
+    onPress: () => { },
     icon: <Image source={require('./assets/home.png')} />,
     component: <Text>Home</Text>,
   },
   {
     title: "Settings",
-    onPress: () => {},
+    onPress: () => { },
     icon: <Image source={require('./assets/settings.png')} />,
   },
 ];
 
 export default function App() {
-  return <DrawerNavigation navigationOptions={options} Page={HomePage} />;
+  return (
+    <DrawerNavigation navigationOptions={options} Page={CustomComponent} />
+  )
 }
+
+
+const CustomComponent = ({ onPress }) => {
+  return (
+    <View style={{ flex: 1, backgroundColor: 'purple', padding: 20 }}>
+      <Text style={{ marginBottom: 20, fontSize: 24, fontWeight: 'bold', color: '#fff' }}>Home</Text>
+
+      <Button onPress={onPress} title="click" />
+    </View>
+  )
+}
+
+
+
