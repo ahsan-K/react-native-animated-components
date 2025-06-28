@@ -43,7 +43,7 @@ const DrawerNavigation: React.FC<DrawerNavigationProps> = ({
     animatedViewStyle,
     itemContainerStyle,
     itemTextStyle,
-    direction = 'right'
+    direction = 'left'
 }) => {
     const animatedHeight = useSharedValue(HEIGHT);
     const animatedWidth = useSharedValue(WIDTH);
