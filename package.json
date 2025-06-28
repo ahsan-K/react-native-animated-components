@@ -19,12 +19,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ahsan-K/react-native-hook-api-calls.git"
+        "url": "git+https://github.com/ahsan-K/react-native-animated-components.git"
     },
     "bugs": {
-        "url": "https://github.com/ahsan-K/react-native-hook-api-calls/issues"
+        "url": "https://github.com/ahsan-K/react-native-animated-components/issues"
     },
-    "homepage": "https://github.com/ahsan-K/react-native-hook-api-calls#readme",
+    "homepage": "https://github.com/ahsan-K/react-native-animated-components#readme",
     "files": [
         "dist"
     ],
