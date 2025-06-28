@@ -26,12 +26,25 @@ interface NavigationOption {
 interface DrawerNavigationProps {
     navigationOptions: NavigationOption[];
     Page: React.ComponentType<{ onPress: () => void }>;
+    flatListStyle?: object;
+    animatedViewStyle?: object;
+    itemContainerStyle?: object;
+    itemTextStyle?: object;
+    direction?: 'right' | 'left'
 }
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-const DrawerNavigation: React.FC<DrawerNavigationProps> = ({ navigationOptions, Page }) => {
+const DrawerNavigation: React.FC<DrawerNavigationProps> = ({
+    navigationOptions,
+    Page,
+    flatListStyle,
+    animatedViewStyle,
+    itemContainerStyle,
+    itemTextStyle,
+    direction = 'right'
+}) => {
     const animatedHeight = useSharedValue(HEIGHT);
     const animatedWidth = useSharedValue(WIDTH);
     const animatedRadius = useSharedValue(100);
@@ -61,12 +74,14 @@ const DrawerNavigation: React.FC<DrawerNavigationProps> = ({ navigationOptions, 
     const animatedStyles = useAnimatedStyle(() => {
         return {
             width: animatedWidth.value,
-            borderTopLeftRadius: animatedRadius.value,
-            borderBottomLeftRadius: animatedRadius.value,
+            borderTopLeftRadius: direction === "right" ? animatedRadius.value : 0,
+            borderBottomLeftRadius: direction === "right" ? animatedRadius.value : 0,
+            borderTopRightRadius: direction === "left" ? animatedRadius.value : 0,
+            borderBottomRightRadius: direction === "left" ? animatedRadius.value : 0,
             overflow: 'hidden',
             height: animatedHeight.value,
             marginVertical: animateMargin.value,
-            alignSelf: 'flex-end',
+            alignSelf: direction === "right" ? 'flex-end' : 'flex-start',
             position: 'absolute',
         };
     });
@@ -78,12 +93,12 @@ const DrawerNavigation: React.FC<DrawerNavigationProps> = ({ navigationOptions, 
 
         return (
             <TouchableOpacity
-                style={styles.itemContainer}
+                style={[styles.itemContainer, { justifyContent: direction === "left" ? "flex-end" : "flex-end" }, itemContainerStyle]}
                 key={index}
                 onPress={item?.onPress}
             >
                 {item?.icon}
-                <Text style={styles.navOptionsStyles}>{item?.title}</Text>
+                <Text style={[styles.navOptionsStyles, itemTextStyle]}>{item?.title}</Text>
             </TouchableOpacity>
         );
     };
@@ -94,8 +109,9 @@ const DrawerNavigation: React.FC<DrawerNavigationProps> = ({ navigationOptions, 
                 keyExtractor={(_, index) => index.toString()}
                 data={navigationOptions}
                 renderItem={renderItem}
+                contentContainerStyle={flatListStyle}
             />
-            <Animated.View style={animatedStyles}>
+            <Animated.View style={[animatedStyles, animatedViewStyle]}>
                 <Page onPress={onPress} />
             </Animated.View>
         </View>
@@ -111,6 +127,9 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 16,
     },
 });
 
