@@ -1,6 +1,6 @@
 {
     "name": "@ahsankk/react-native-animated-components",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Custom React Native hook for API calls using axios",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
