@@ -18,11 +18,7 @@ Currently, it includes a fully customizable **animated drawer navigation page**.
 
 Here’s a quick preview of the drawer navigation in action:
 
-![Drawer Navigation Demo](https://drive.google.com/file/d/1kTfZe67VDSF-uCnPhmA619tpH2q2pdiF/view?usp=drive_link)
-
-> ℹ️ Make sure the `.gif` file is placed in an `assets` folder within your project.  
-> You can also use an external URL like:
-> `![Demo](https://drive.google.com/file/d/1kTfZe67VDSF-uCnPhmA619tpH2q2pdiF/view?usp=drive_link)`
+![Drawer Navigation Demo](https://drive.google.com/uc?export=view&id=1kTfZe67VDSF-uCnPhmA619tpH2q2pdiF)
 
 ---
 
