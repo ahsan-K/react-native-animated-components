@@ -1,69 +1,34 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const react_native_reanimated_1 = __importStar(require("react-native-reanimated"));
-const react_native_1 = require("react-native");
-const WIDTH = react_native_1.Dimensions.get('window').width;
-const HEIGHT = react_native_1.Dimensions.get('window').height;
+import React, { useEffect } from 'react';
+import Animated, { useSharedValue, withTiming, useAnimatedStyle, } from 'react-native-reanimated';
+import { View, Text, TouchableOpacity, Dimensions, StyleSheet, FlatList, } from 'react-native';
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 const DrawerNavigation = ({ navigationOptions, Page }) => {
-    const animatedHeight = (0, react_native_reanimated_1.useSharedValue)(HEIGHT);
-    const animatedWidth = (0, react_native_reanimated_1.useSharedValue)(WIDTH);
-    const animatedRadius = (0, react_native_reanimated_1.useSharedValue)(100);
-    const animateMargin = (0, react_native_reanimated_1.useSharedValue)(0);
-    (0, react_1.useEffect)(() => {
-        animatedWidth.value = (0, react_native_reanimated_1.withTiming)(WIDTH);
-        animatedHeight.value = (0, react_native_reanimated_1.withTiming)(HEIGHT);
-        animatedRadius.value = (0, react_native_reanimated_1.withTiming)(0);
-        animateMargin.value = (0, react_native_reanimated_1.withTiming)(0);
+    const animatedHeight = useSharedValue(HEIGHT);
+    const animatedWidth = useSharedValue(WIDTH);
+    const animatedRadius = useSharedValue(100);
+    const animateMargin = useSharedValue(0);
+    useEffect(() => {
+        animatedWidth.value = withTiming(WIDTH);
+        animatedHeight.value = withTiming(HEIGHT);
+        animatedRadius.value = withTiming(0);
+        animateMargin.value = withTiming(0);
     }, []);
     const onPress = () => {
         if (animatedWidth.value === WIDTH / 2.5) {
-            animatedWidth.value = (0, react_native_reanimated_1.withTiming)(WIDTH);
-            animatedRadius.value = (0, react_native_reanimated_1.withTiming)(0);
-            animatedHeight.value = (0, react_native_reanimated_1.withTiming)(HEIGHT);
-            animateMargin.value = (0, react_native_reanimated_1.withTiming)(0);
+            animatedWidth.value = withTiming(WIDTH);
+            animatedRadius.value = withTiming(0);
+            animatedHeight.value = withTiming(HEIGHT);
+            animateMargin.value = withTiming(0);
         }
         else {
-            animatedWidth.value = (0, react_native_reanimated_1.withTiming)(WIDTH / 2.5);
-            animatedRadius.value = (0, react_native_reanimated_1.withTiming)(20);
-            animatedHeight.value = (0, react_native_reanimated_1.withTiming)(HEIGHT - 100);
-            animateMargin.value = (0, react_native_reanimated_1.withTiming)(40);
+            animatedWidth.value = withTiming(WIDTH / 2.5);
+            animatedRadius.value = withTiming(20);
+            animatedHeight.value = withTiming(HEIGHT - 100);
+            animateMargin.value = withTiming(40);
         }
     };
-    const animatedStyles = (0, react_native_reanimated_1.useAnimatedStyle)(() => {
+    const animatedStyles = useAnimatedStyle(() => {
         return {
             width: animatedWidth.value,
             borderTopLeftRadius: animatedRadius.value,
@@ -77,21 +42,21 @@ const DrawerNavigation = ({ navigationOptions, Page }) => {
     });
     const renderItem = ({ item, index }) => {
         if (item === null || item === void 0 ? void 0 : item.component) {
-            return <react_1.default.Fragment key={index}>{item.component}</react_1.default.Fragment>;
+            return <React.Fragment key={index}>{item.component}</React.Fragment>;
         }
-        return (<react_native_1.TouchableOpacity style={styles.itemContainer} key={index} onPress={item === null || item === void 0 ? void 0 : item.onPress}>
+        return (<TouchableOpacity style={styles.itemContainer} key={index} onPress={item === null || item === void 0 ? void 0 : item.onPress}>
                 {item === null || item === void 0 ? void 0 : item.icon}
-                <react_native_1.Text style={styles.navOptionsStyles}>{item === null || item === void 0 ? void 0 : item.title}</react_native_1.Text>
-            </react_native_1.TouchableOpacity>);
+                <Text style={styles.navOptionsStyles}>{item === null || item === void 0 ? void 0 : item.title}</Text>
+            </TouchableOpacity>);
     };
-    return (<react_native_1.View>
-            <react_native_1.FlatList keyExtractor={(_, index) => index.toString()} data={navigationOptions} renderItem={renderItem}/>
-            <react_native_reanimated_1.default.View style={animatedStyles}>
+    return (<View>
+            <FlatList keyExtractor={(_, index) => index.toString()} data={navigationOptions} renderItem={renderItem}/>
+            <Animated.View style={animatedStyles}>
                 <Page onPress={onPress}/>
-            </react_native_reanimated_1.default.View>
-        </react_native_1.View>);
+            </Animated.View>
+        </View>);
 };
-const styles = react_native_1.StyleSheet.create({
+const styles = StyleSheet.create({
     navOptionsStyles: {
         marginBottom: 20,
         fontSize: 24,
@@ -102,4 +67,4 @@ const styles = react_native_1.StyleSheet.create({
         flexDirection: 'row',
     },
 });
-exports.default = DrawerNavigation;
+export default DrawerNavigation;
