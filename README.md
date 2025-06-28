@@ -18,7 +18,7 @@ Currently, it includes a fully customizable **animated drawer navigation page**.
 
 Here’s a quick preview of the drawer navigation in action:
 
-![Drawer Navigation Demo](https://drive.google.com/uc?export=view&id=1kTfZe67VDSF-uCnPhmA619tpH2q2pdiF)
+![Drawer Navigation Demo](./demos/drawer%20demo.gif)
 
 ---
 
