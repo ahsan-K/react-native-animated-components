@@ -86,7 +86,7 @@ export default function App() {
         labels={{ on: 'YES', off: 'NO' }}
         switchTrackStyle={{ backgroundColor: '#333' }}
         circleStyle={{ backgroundColor: '#ffb703' }}
-        textStyle={{ color: '#fff' }}
+        labelStyle={{ color: '#fff' }}
       />
     </View>
   );
