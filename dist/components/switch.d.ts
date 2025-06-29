@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-interface Switch {
+interface SwitchProps {
     value?: boolean;
     onChange: (value: boolean) => void;
     circleStyle?: StyleProp<ViewStyle>;
@@ -11,5 +11,5 @@ interface Switch {
         off: string;
     };
 }
-declare const Switch: React.FC<Switch>;
+declare const Switch: React.FC<SwitchProps>;
 export default Switch;
