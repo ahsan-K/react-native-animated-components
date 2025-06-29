@@ -16,11 +16,11 @@ Currently, it includes a fully customizable **animated drawer navigation page**.
 
 ## Installation
 
-yarn add @ahsankk/react-native-animated-components react-native-reanimated
+yarn add @ahsankk/react-native-animated-components react-native-reanimated react-native-gesture-handler
 
 OR
 
-npm install @ahsankk/react-native-animated-components react-native-reanimated
+npm install @ahsankk/react-native-animated-components react-native-reanimated react-native-gesture-handler
 
 ## 📸 Demo
 
@@ -29,6 +29,9 @@ Here’s a quick preview of components:
 ![Drawer Navigation Demo](./demos/drawer%20demo.gif)
 
 ![Switch Demo](./demos/Switch.gif)
+
+![Carousel Demo](./demos/carousel.gif)
+
 
 ---
 
@@ -91,3 +94,40 @@ export default function App() {
     </View>
   );
 }
+
+
+
+import { StyleSheet, View } from 'react-native';
+import Carousel from './customComponent';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+export default function App() {
+  const cards = ['red', 'blue', 'yellow', 'green', 'orange'];
+  return (
+    <GestureHandlerRootView style={styles.container}>
+
+      <Carousel
+        data={cards}
+        CARD_WIDTH={300}
+        CARD_HEIGHT={400}
+        SWIPE_THRESHOLD={80}
+        renderCard={(item) => {
+          return (
+            <View style={{ flex: 1, backgroundColor: item, justifyContent: 'center', alignItems: 'center', backgroundColor: item }} />
+          )
+        }}
+        onIndexChange={(index) => console.log('Current Index:', index)} // ✅ Callback
+
+      />
+    </GestureHandlerRootView>
+  );
+}
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

@@ -9,7 +9,10 @@
         "animated-components",
         "react-native-reanimated",
         "ui-library",
-        "component-library"
+        "component-library",
+        "carousel",
+        "drawer",
+        "switch"
     ],
     "author": "Ahsan Ali",
     "license": "MIT",
@@ -29,13 +32,14 @@
         "dist"
     ],
     "peerDependencies": {
-        "react": ">=18.0.0",
-        "react-native": ">=0.71.0",
+        "react": "^18.2.0",
+        "react-native": "^0.71.8",
+        "react-native-gesture-handler": "^2.26.0",
         "react-native-reanimated": ">=3.0.0"
     },
     "devDependencies": {
-        "@types/react": "^18.0.37",
-        "@types/react-native": "^0.71.8",
+        "@types/react": "^18.3.23",
+        "@types/react-native": "^0.71.13",
         "typescript": "^5.8.3"
     }
 }

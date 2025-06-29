@@ -13,7 +13,7 @@ import Animated, {
     useAnimatedStyle,
 } from 'react-native-reanimated';
 
-interface Switch {
+interface SwitchProps {
     value?: boolean;
     onChange: (value: boolean) => void;
     circleStyle?: StyleProp<ViewStyle>;
@@ -25,7 +25,7 @@ interface Switch {
     };
 }
 
-const Switch: React.FC<Switch> = ({
+const Switch: React.FC<SwitchProps> = ({
     value = false,
     onChange,
     circleStyle,
