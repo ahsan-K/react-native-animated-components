@@ -14,11 +14,21 @@ Currently, it includes a fully customizable **animated drawer navigation page**.
 
 ---
 
+## Installation
+
+yarn add @ahsankk/react-native-animated-components react-native-reanimated
+
+OR
+
+npm install @ahsankk/react-native-animated-components react-native-reanimated
+
 ## 📸 Demo
 
-Here’s a quick preview of the drawer navigation in action:
+Here’s a quick preview of components:
 
 ![Drawer Navigation Demo](./demos/drawer%20demo.gif)
+
+![Switch Demo](./demos/Switch.gif)
 
 ---
 
@@ -62,3 +72,22 @@ const CustomComponent = ({ onPress }) => {
 
 
 
+
+
+import { Switch } from '@ahsankk/react-native-animated-components';
+import { View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={{ padding: 20 }}>
+      <Switch
+        value={false}
+        onChange={(val) => console.log('Switch state:', val)}
+        labels={{ on: 'YES', off: 'NO' }}
+        switchTrackStyle={{ backgroundColor: '#333' }}
+        circleStyle={{ backgroundColor: '#ffb703' }}
+        textStyle={{ color: '#fff' }}
+      />
+    </View>
+  );
+}
